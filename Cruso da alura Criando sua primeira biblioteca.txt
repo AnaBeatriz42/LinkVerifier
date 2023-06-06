@@ -1,0 +1,66 @@
+Cruso da alura: Criando sua primeira biblioteca 
+
+
+FUNÇÕES CALBACK: Basicamente funções de erro que permite a chamada de uma outra função
+
+ A biblioteca fs para o metodo readFile sincrono precisa de 3 parametros:
+     - O caminho do arquivo
+     - O encoding
+     - E uma função de calback que recebe 2 parramentos: Um de erros e outro com o conteudo de resposta 
+          * Observação: o _ referencia-se ao parametro de erro que não esta sendo utilizado.
+exemplo:
+function pegaArquivo(path){
+     const encoding = 'utf-8'
+     fs.readFile(path, encoding, (err, res) =>{
+          if (err) trataErros(err);
+          console.log(chalk.green(res))
+     })
+};
+
+Já o metodo readFile assincrono depende da funcionalidade assincrona (promisses) da biblioteca fs 
+Opção 01)
+function pegaArquivo(path) {
+     const encoding = 'utf-8'
+     fs.promises.readFile(path, encoding)
+          .then((res) => console.log(res))
+          .catch(trataErros)
+}
+
+Opção 02)
+async function pegaArquivo(path){
+     try{
+          const encoding = 'utf-8'
+          const texto =  await fs.promises.readFile(path, encoding)
+          console.log(texto)
+     }catch (erro){
+          trataErros(erro)
+     }
+    
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Expressões regulares:
+Estudar separadamente detalhes a mais  de como construir expressões regulares e seus padrões e treinar suas criações  
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+... (Spread Operator):
+  	Operador de espalhamento servindo para expandir um objeto
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Construindo a CLI de comunicação entre a lib e o terminal
+
+ const caminho = process.argv // captura oq esta sendo colocado no terminal 
+
+conhecer melhor a biblioteca fs do node
+
+API fech do node estudar e revisar  assim como o Objeto Promise do javaScript 
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
